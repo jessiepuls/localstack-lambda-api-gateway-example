@@ -1,9 +1,12 @@
+# API Gateway that is centrally owned and managed
 module "api_gateway" {
   source      = "../../modules/api_gateway"
   environment = "local"
   api_name    = "example-api"
 }
 
+# Each service has their own setup.
+# Could and probably should embed the api gateway route into the lambda module so you can just create both at once.
 module "service1" {
   source        = "../../modules/lambda"
   code_path     = "../../../source/hello/hello"
